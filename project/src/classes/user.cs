@@ -5,6 +5,13 @@ namespace Education
         public string name { get; set; }
         public string email { get; set; }
         public int age { get; set; }
+         public User()
+        {
+            this.name = "none";
+            this.email = "none";
+            this.age = 1;
+
+        }
         public User(string name, string email, int age)
         {
             this.name = name;
@@ -14,22 +21,8 @@ namespace Education
         }
         public void print()
         {
-            System.Console.WriteLine($"user {name} with {email} ang age {age}");
+            System.Console.WriteLine($" == user with name:{name}; email:{email} and age:{age} ==");
         }
 
-        public override bool Equals(object obj)
-        {
-            return base.Equals(obj);
-        }
-
-        public override int GetHashCode()
-        {
-            return base.GetHashCode();
-        }
-
-        public override string ToString()
-        {
-            return base.ToString();
-        }
     }
 }
