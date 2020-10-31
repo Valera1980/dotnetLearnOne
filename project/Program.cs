@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using ArrayArea;
+using DelegatesExamples;
 
 namespace educationOne
 {
@@ -22,12 +23,17 @@ namespace educationOne
             arrW.loop();
 
             // list
-            List<int> lll = new List<int> { 55, 66, 77, 88 };
+            List<int> lll = new List<int> { 55,99 };
             ListWorking lw = new ListWorking(lll);
             lll.Add(99);
             lll.Add(34);
             lll.Add(384);
             lw.print();
+
+            // delegate
+            LoggerWithDelegate lg = new LoggerWithDelegate();
+            string msg = lg.getMessage("today it is rainy");
+            System.Console.WriteLine(msg);
         }
     }
 }

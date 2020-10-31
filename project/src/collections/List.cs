@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
@@ -10,6 +11,10 @@ public class ListWorking
         if (list == null)
         {
             this._list = new List<int> { 1, 2, 3, 4, 5 };
+        }
+        else if (list.Count == 1)
+        {
+            throw new ArgumentException("Size of list should be more than one");
         }
         else
         {
@@ -36,6 +41,6 @@ public class ListWorking
     }
     public void addNewToCollection(int p)
     {
-       this._list.Add(p);
+        this._list.Add(p);
     }
 }
