@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using ArrayArea;
+using Cars;
 using DelegatesExamples;
 using Education;
 using LinqEducation;
@@ -14,13 +15,22 @@ namespace educationOne
         {
 
             // LINQ
-            IEnumerable<User> users = new List<User> { new User("1171", "111", 22), new User("222", "222", 33) };
+            FileReader reader = new FileReader("fuel.csv");
+            List<Car> cars = reader.read();
+            System.Console.WriteLine(cars.Count());
 
-            LinqOne lqOne = new LinqOne();
-            var res = lqOne.getUserQuerySyntax(users);
-            var res1 = lqOne.getUserMethodSyntax(users);
-            System.Console.WriteLine(res);
-            res1.print();
+
+            var best = cars.OrderByDescending(c => c.Combined).ThenBy(c => c.Name).Take(10);
+            foreach (var b in best)
+            {
+                System.Console.WriteLine(b.toString());
+            }
+
+
+
+            //**********************************************************
+            //**********************************************************
+            //**********************************************************
             // {
             //     Console.WriteLine($"arguments : {args[0]}");
             // }

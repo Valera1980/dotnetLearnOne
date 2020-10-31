@@ -1,0 +1,20 @@
+namespace Cars
+{
+    public class Car 
+    {
+        public int Year {get; set;}
+        public string Manufacturer {get; set;}
+        public string Name {get; set;}
+        public double Displacement {get; set;}
+        public int Cylinders {get; set;}
+        public int City {get; set;}
+        public int Highway {get; set;}
+        public int Combined {get; set;}
+
+        public string toString()
+        {
+          return $" <<< Name:'{Name}', Year:'{Year}', Manufacturer:'{Manufacturer}', Displacement:'{Displacement}'" +
+                 $" Cylinders:'{Cylinders}', City:'{City}', Highway:'{Highway}', Combined:'{Combined}' >>>";
+        }
+    }
+}
