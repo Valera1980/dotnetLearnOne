@@ -2,9 +2,9 @@ namespace Education
 {
     public class User
     {
-        string name { get; set; }
-        string email { get; set; }
-        int age { get; set; }
+        public string name { get; set; }
+        public string email { get; set; }
+        public int age { get; set; }
         public User(string name, string email, int age)
         {
             this.name = name;
