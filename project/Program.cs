@@ -6,6 +6,7 @@ using Cars;
 using DelegatesExamples;
 using Education;
 using LinqEducation;
+using MyDateTome;
 
 namespace educationOne
 {
@@ -14,12 +15,15 @@ namespace educationOne
         static void Main(string[] args)
         {
 
+            // date times
+            DateTimeUtils.showTimeZones();
+
             // LINQ
             // FileReader reader = new FileReader("fuel.csv");
-            List<Car> cars = FileReader.readCars("fuel.csv");
-            List<Manufacturer> manufacturers = FileReader.readManufactures("manufacturers.csv");
-            System.Console.WriteLine(cars.Count());
-            System.Console.WriteLine(manufacturers.Count());
+            // List<Car> cars = FileReader.readCars("fuel.csv");
+            // List<Manufacturer> manufacturers = FileReader.readManufactures("manufacturers.csv");
+            // System.Console.WriteLine(cars.Count());
+            // System.Console.WriteLine(manufacturers.Count());
 
 
             // var res = cars.OrderByDescending(c => c.Combined).ThenBy(c => c.Name).Take(10);
@@ -31,18 +35,18 @@ namespace educationOne
             // }
 
             //************** JOINING *******************
-            var joinRes = cars.Join(
-                manufacturers,
-                c => c.Manufacturer,
-                m => m.Name,
-                (c, m) => new { m.Headquarters, c.Name, c.Combined }
-            )
-            .OrderByDescending(c => c.Combined);
+            // var joinRes = cars.Join(
+            //     manufacturers,
+            //     c => c.Manufacturer,
+            //     m => m.Name,
+            //     (c, m) => new { m.Headquarters, c.Name, c.Combined }
+            // )
+            // .OrderByDescending(c => c.Combined);
 
-            foreach (var i in joinRes)
-            {
-                System.Console.WriteLine(i);
-            }
+            // foreach (var i in joinRes)
+            // {
+            //     System.Console.WriteLine(i);
+            // }
 
 
             //**********************************************************

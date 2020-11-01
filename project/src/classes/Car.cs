@@ -1,8 +1,10 @@
+using System;
+
 namespace Cars
 {
     public class Car 
     {
-        public int Year {get; set;}
+        public Int32 Year {get; set;}
         public string Manufacturer {get; set;}
         public string Name {get; set;}
         public double Displacement {get; set;}
