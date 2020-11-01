@@ -5,25 +5,40 @@ using System.Linq;
 
 namespace Cars
 {
-    public class FileReader
+    public static class FileReader
     {
-        private string _path;
 
-        public FileReader(string path)
+        public static List<Car> readCars(string path)
         {
-            _path = path;
-        }
-        public List<Car> read()
-        {
-            var res = File.ReadAllLines(_path)
+            var res = File.ReadAllLines(path)
             .Skip(1)
             .Where(line => line.Length > 1)
             .Select(transformToCar)
             .ToList();
             return res;
         }
+        public static List<Manufacturer> readManufactures(string path)
+        {
+            var res = File.ReadAllLines(path)
+            .Skip(1)
+            .Where(line => line.Length > 1)
+            .Select(transformToManufactures)
+            .ToList();
+            return res;
+        }
 
-        private Car transformToCar(string line)
+        private static Manufacturer transformToManufactures(string line)
+        {
+            var columns = line.Split(',');
+            return new Manufacturer
+            {
+                Name = columns[0],
+                Headquarters = columns[1],
+                Year = int.Parse(columns[2]),
+            };
+        }
+
+        private static Car transformToCar(string line)
         {
             var columns = line.Split(',');
             return new Car

@@ -15,17 +15,34 @@ namespace educationOne
         {
 
             // LINQ
-            FileReader reader = new FileReader("fuel.csv");
-            List<Car> cars = reader.read();
+            // FileReader reader = new FileReader("fuel.csv");
+            List<Car> cars = FileReader.readCars("fuel.csv");
+            List<Manufacturer> manufacturers = FileReader.readManufactures("manufacturers.csv");
             System.Console.WriteLine(cars.Count());
+            System.Console.WriteLine(manufacturers.Count());
 
 
-            var best = cars.OrderByDescending(c => c.Combined).ThenBy(c => c.Name).Take(10);
-            foreach (var b in best)
+            // var res = cars.OrderByDescending(c => c.Combined).ThenBy(c => c.Name).Take(10);
+            // var res = cars.All(c => c.Manufacturer == "Ford");
+            // System.Console.WriteLine(res);
+            // foreach (var b in res)
+            // {
+            //     System.Console.WriteLine(b.toString());
+            // }
+
+            //************** JOINING *******************
+            var joinRes = cars.Join(
+                manufacturers,
+                c => c.Manufacturer,
+                m => m.Name,
+                (c, m) => new { m.Headquarters, c.Name, c.Combined }
+            )
+            .OrderByDescending(c => c.Combined);
+
+            foreach (var i in joinRes)
             {
-                System.Console.WriteLine(b.toString());
+                System.Console.WriteLine(i);
             }
-
 
 
             //**********************************************************
